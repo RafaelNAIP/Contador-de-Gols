@@ -1,24 +1,13 @@
 'use client'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../page.module.css";
 import GoalsCells from "./goalsCells";
+import { Goals } from "@/Interfaces/goals";
+import MatchCells from "./matchCells";
 
 export default function Matches() {
-    const [goalsCellsArray,setGoalsCellsArray] = useState([1])
     const [matchCellsArray, setMatchCellsArray] = useState([1])
-
-    const addNewGoalsCells = () => {
-        const oldArray = goalsCellsArray;
-
-        setGoalsCellsArray(oldArray => [...oldArray, oldArray[oldArray.length - 1] + 1])
-    }
-
-    const removeGoalsCells = () => {
-        if(goalsCellsArray.length > 1) {
-            setGoalsCellsArray(goalsCellsArray.slice(0, goalsCellsArray.length - 1))
-        }
-    }
 
     const endMatchAndCreateOther = () => {
         setMatchCellsArray(matchCellsArray => [...matchCellsArray, matchCellsArray[matchCellsArray.length - 1] + 1])
@@ -33,14 +22,7 @@ export default function Matches() {
       <div className={styles.body}>
         {matchCellsArray.map((matchNumber) => {
         return (
-            <div className={styles.matchCell}>
-                <p>Partida {matchNumber}</p>
-                {goalsCellsArray.map(() => <GoalsCells />)}
-                <div className={styles.buttonContainer}>
-                    <button onClick={addNewGoalsCells}>+</button>
-                    <button onClick={removeGoalsCells}>-</button>
-                </div>
-            </div>
+            <MatchCells matchNumber={matchNumber} />
         )
         })}
         <button onClick={endMatchAndCreateOther} className={styles.finishMatchButton}>Finalizar partida</button>
@@ -51,6 +33,6 @@ export default function Matches() {
 
 // Criar botão de finalizar pelada que vai ficar na posição do "footer" e criar um esquema de scrool quando as partidas forem aumentando
 
-// Criar dropdown baseado nos jogadores da lista que jogadores
+// Criar dropdown baseado nos jogadores da lista que jogadores DONE!
 
 // Pensar e organizar a lista de dados que será enviada quando a pelada for finalizada

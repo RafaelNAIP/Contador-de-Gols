@@ -9,14 +9,20 @@ export default function Home() {
 
   const getAndOrganizePlayersList = () => {
     const lines = playersList.trim().split('\n');
+    try {
+      const names = lines.map(lines => {
+        return lines.split('-')[1].trim();
+      })
+      if (names.length > 0){
+        localStorage.setItem("playersList", JSON.stringify(names))
+    
+        console.log(names);
+        router.push('/matches')
+      }
+    } catch (error) {
+      alert("Adicione uma lista válida")
+    }
 
-    const names = lines.map(lines => {
-      return lines.split('-')[1].trim();
-    })
-
-    // Agora é preciso enviar esses dados pra outra tela pra poder organizar em contador ou por partidas
-    console.log(names);
-    router.push('/matches')
   }
 
   return (
