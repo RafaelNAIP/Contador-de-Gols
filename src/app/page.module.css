@@ -43,3 +43,48 @@
 .createButton:hover {
   background-color: #FBC02D;
 }
+
+.matchCell {
+  height: fit-content;
+  width: 100%;
+  padding: 4px;
+  background-color: #E0E0E0;
+  margin-top: 10px;
+}
+
+.matchCell button {
+  margin-top: 25px;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: #4CAF50;
+  font-size: 20px;
+  background-color: #E0E0E0;
+}
+
+.goalsCells {
+  display: flex;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.goalsCells input {
+  width: 20%;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
+
+.finishMatchButton {
+  border: 0;
+  background-color: #FFEB3B;
+  font-size: 17px;
+  padding: 4px;
+  margin-top: 10px;
+}
